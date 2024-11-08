@@ -1,6 +1,5 @@
-// @ts-ignore
 import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, ChartOptions } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
@@ -36,10 +35,11 @@ const ChartComponent: React.FC<ChartProps> = ({ data }) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
+    responsive: true,
     scales: {
-      y: { type: 'linear', position: 'left' },
-      y1: { type: 'linear', position: 'right' },
+      y: { type: 'linear', position: 'left' as const },
+      y1: { type: 'linear', position: 'right' as const },
     },
   };
 
